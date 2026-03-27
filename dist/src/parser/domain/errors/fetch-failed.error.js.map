@@ -1,0 +1,1 @@
+{"version":3,"file":"fetch-failed.error.js","sourceRoot":"","sources":["../../../../../src/parser/domain/errors/fetch-failed.error.ts"],"names":[],"mappings":";;;AAAA,sEAAiE;AAEjE,MAAa,gBAAiB,SAAQ,0BAAW;IACtC,IAAI,GAAG,cAAc,CAAA;IAE9B,YAAY,IAAY,EAAE,MAAc;QACtC,KAAK,CAAC,mBAAmB,IAAI,KAAK,MAAM,EAAE,CAAC,CAAA;IAC7C,CAAC;CACF;AAND,4CAMC"}

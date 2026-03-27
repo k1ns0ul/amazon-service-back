@@ -1,0 +1,191 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id             String          @id @default(uuid())
+  apiKey         String          @unique @default(uuid())
+  email          String          @unique
+  role           UserRole        @default(USER)
+  createdAt      DateTime        @default(now())
+  parseJobs      ParseJob[]
+  sellerProfiles SellerProfile[]
+
+  @@index([apiKey])
+  @@map("users")
+}
+
+model SellerProfile {
+  id             String     @id @default(uuid())
+  userId         String
+  amazonSellerId String
+  name           String?
+  createdAt      DateTime   @default(now())
+  user           User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  parseJobs      ParseJob[]
+
+  @@unique([userId, amazonSellerId])
+  @@index([amazonSellerId])
+  @@map("seller_profiles")
+}
+
+model Category {
+  id           String     @id @default(uuid())
+  nodeId       String     @unique
+  name         String?
+  lastParsedAt DateTime?
+  createdAt    DateTime   @default(now())
+  parseJobs    ParseJob[]
+  products     Product[]
+
+  @@index([nodeId])
+  @@map("categories")
+}
+
+model ParseJob {
+  id              String            @id @default(uuid())
+  userId          String
+  categoryId      String
+  sellerProfileId String?
+  type            ParseJobType
+  status          ParseJobStatus    @default(PENDING)
+  productsFound   Int               @default(0)
+  productsOk      Int               @default(0)
+  productsFailed  Int               @default(0)
+  requestedAt     DateTime          @default(now())
+  startedAt       DateTime?
+  finishedAt      DateTime?
+  durationMs      Int?
+  errorMessage    String?
+  user            User              @relation(fields: [userId], references: [id])
+  category        Category          @relation(fields: [categoryId], references: [id])
+  sellerProfile   SellerProfile?    @relation(fields: [sellerProfileId], references: [id])
+  snapshots       ProductSnapshot[]
+
+  @@index([userId, status])
+  @@index([categoryId])
+  @@index([requestedAt])
+  @@map("parse_jobs")
+}
+
+model Product {
+  id         String            @id @default(uuid())
+  asin       String            @unique
+  categoryId String?
+  title      String
+  sellerId   String?
+  createdAt  DateTime          @default(now())
+  updatedAt  DateTime          @updatedAt
+  category   Category?         @relation(fields: [categoryId], references: [id])
+  snapshots  ProductSnapshot[]
+  reviews    Review[]
+
+  @@index([asin])
+  @@index([categoryId])
+  @@index([sellerId])
+  @@map("products")
+}
+
+model ProductSnapshot {
+  id          String      @id @default(uuid())
+  productId   String
+  parseJobId  String
+  price       Decimal?    @db.Decimal(10, 2)
+  currency    String      @default("USD")
+  rating      Decimal?    @db.Decimal(3, 2)
+  reviewCount Int?
+  parseStatus ParseStatus
+  capturedAt  DateTime    @default(now())
+  product     Product     @relation(fields: [productId], references: [id], onDelete: Cascade)
+  parseJob    ParseJob    @relation(fields: [parseJobId], references: [id])
+
+  @@index([productId, capturedAt])
+  @@index([parseJobId])
+  @@index([capturedAt])
+  @@map("product_snapshots")
+}
+
+model Review {
+  id          String    @id @default(uuid())
+  productId   String
+  externalId  String?
+  title       String?
+  rating      Decimal?  @db.Decimal(3, 2)
+  reviewDate  DateTime?
+  rawDateText String?
+  capturedAt  DateTime  @default(now())
+  product     Product   @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@unique([productId, externalId])
+  @@index([productId, reviewDate])
+  @@index([reviewDate])
+  @@map("reviews")
+}
+
+model ProxyEntry {
+  id            String      @id @default(uuid())
+  url           String      @unique
+  host          String
+  port          Int
+  username      String?
+  isActive      Boolean     @default(true)
+  failureCount  Int         @default(0)
+  successCount  Int         @default(0)
+  disabledUntil DateTime?
+  lastCheckedAt DateTime?
+  lastStatus    ProxyStatus @default(UNKNOWN)
+  createdAt     DateTime    @default(now())
+
+  @@index([isActive, disabledUntil])
+  @@index([lastStatus])
+  @@map("proxy_entries")
+}
+
+model CookieSession {
+  id           String    @id @default(uuid())
+  cookieHeader String    @db.Text
+  isValid      Boolean   @default(true)
+  capturedAt   DateTime  @default(now())
+  expiresAt    DateTime
+  lastUsedAt   DateTime?
+
+  @@index([isValid, expiresAt])
+  @@map("cookie_sessions")
+}
+
+enum UserRole {
+  USER
+  ADMIN
+}
+
+enum ParseJobType {
+  OWN_PRODUCTS
+  COMPETITORS
+  CATEGORY_TRENDS
+}
+
+enum ParseJobStatus {
+  PENDING
+  RUNNING
+  DONE
+  FAILED
+}
+
+enum ParseStatus {
+  OK
+  CAPTCHA
+  PARSE_ERROR
+  NETWORK_ERROR
+}
+
+enum ProxyStatus {
+  UNKNOWN
+  OK
+  BANNED
+  DEAD
+}

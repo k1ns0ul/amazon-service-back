@@ -1,0 +1,863 @@
+import type * as runtime from "@prisma/client/runtime/client";
+import type * as $Enums from "../enums";
+import type * as Prisma from "../internal/prismaNamespace";
+export type ProductSnapshotModel = runtime.Types.Result.DefaultSelection<Prisma.$ProductSnapshotPayload>;
+export type AggregateProductSnapshot = {
+    _count: ProductSnapshotCountAggregateOutputType | null;
+    _avg: ProductSnapshotAvgAggregateOutputType | null;
+    _sum: ProductSnapshotSumAggregateOutputType | null;
+    _min: ProductSnapshotMinAggregateOutputType | null;
+    _max: ProductSnapshotMaxAggregateOutputType | null;
+};
+export type ProductSnapshotAvgAggregateOutputType = {
+    price: runtime.Decimal | null;
+    rating: runtime.Decimal | null;
+    reviewCount: number | null;
+};
+export type ProductSnapshotSumAggregateOutputType = {
+    price: runtime.Decimal | null;
+    rating: runtime.Decimal | null;
+    reviewCount: number | null;
+};
+export type ProductSnapshotMinAggregateOutputType = {
+    id: string | null;
+    productId: string | null;
+    parseJobId: string | null;
+    price: runtime.Decimal | null;
+    currency: string | null;
+    rating: runtime.Decimal | null;
+    reviewCount: number | null;
+    parseStatus: $Enums.ParseStatus | null;
+    capturedAt: Date | null;
+};
+export type ProductSnapshotMaxAggregateOutputType = {
+    id: string | null;
+    productId: string | null;
+    parseJobId: string | null;
+    price: runtime.Decimal | null;
+    currency: string | null;
+    rating: runtime.Decimal | null;
+    reviewCount: number | null;
+    parseStatus: $Enums.ParseStatus | null;
+    capturedAt: Date | null;
+};
+export type ProductSnapshotCountAggregateOutputType = {
+    id: number;
+    productId: number;
+    parseJobId: number;
+    price: number;
+    currency: number;
+    rating: number;
+    reviewCount: number;
+    parseStatus: number;
+    capturedAt: number;
+    _all: number;
+};
+export type ProductSnapshotAvgAggregateInputType = {
+    price?: true;
+    rating?: true;
+    reviewCount?: true;
+};
+export type ProductSnapshotSumAggregateInputType = {
+    price?: true;
+    rating?: true;
+    reviewCount?: true;
+};
+export type ProductSnapshotMinAggregateInputType = {
+    id?: true;
+    productId?: true;
+    parseJobId?: true;
+    price?: true;
+    currency?: true;
+    rating?: true;
+    reviewCount?: true;
+    parseStatus?: true;
+    capturedAt?: true;
+};
+export type ProductSnapshotMaxAggregateInputType = {
+    id?: true;
+    productId?: true;
+    parseJobId?: true;
+    price?: true;
+    currency?: true;
+    rating?: true;
+    reviewCount?: true;
+    parseStatus?: true;
+    capturedAt?: true;
+};
+export type ProductSnapshotCountAggregateInputType = {
+    id?: true;
+    productId?: true;
+    parseJobId?: true;
+    price?: true;
+    currency?: true;
+    rating?: true;
+    reviewCount?: true;
+    parseStatus?: true;
+    capturedAt?: true;
+    _all?: true;
+};
+export type ProductSnapshotAggregateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.ProductSnapshotWhereInput;
+    orderBy?: Prisma.ProductSnapshotOrderByWithRelationInput | Prisma.ProductSnapshotOrderByWithRelationInput[];
+    cursor?: Prisma.ProductSnapshotWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    _count?: true | ProductSnapshotCountAggregateInputType;
+    _avg?: ProductSnapshotAvgAggregateInputType;
+    _sum?: ProductSnapshotSumAggregateInputType;
+    _min?: ProductSnapshotMinAggregateInputType;
+    _max?: ProductSnapshotMaxAggregateInputType;
+};
+export type GetProductSnapshotAggregateType<T extends ProductSnapshotAggregateArgs> = {
+    [P in keyof T & keyof AggregateProductSnapshot]: P extends '_count' | 'count' ? T[P] extends true ? number : Prisma.GetScalarType<T[P], AggregateProductSnapshot[P]> : Prisma.GetScalarType<T[P], AggregateProductSnapshot[P]>;
+};
+export type ProductSnapshotGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.ProductSnapshotWhereInput;
+    orderBy?: Prisma.ProductSnapshotOrderByWithAggregationInput | Prisma.ProductSnapshotOrderByWithAggregationInput[];
+    by: Prisma.ProductSnapshotScalarFieldEnum[] | Prisma.ProductSnapshotScalarFieldEnum;
+    having?: Prisma.ProductSnapshotScalarWhereWithAggregatesInput;
+    take?: number;
+    skip?: number;
+    _count?: ProductSnapshotCountAggregateInputType | true;
+    _avg?: ProductSnapshotAvgAggregateInputType;
+    _sum?: ProductSnapshotSumAggregateInputType;
+    _min?: ProductSnapshotMinAggregateInputType;
+    _max?: ProductSnapshotMaxAggregateInputType;
+};
+export type ProductSnapshotGroupByOutputType = {
+    id: string;
+    productId: string;
+    parseJobId: string;
+    price: runtime.Decimal | null;
+    currency: string;
+    rating: runtime.Decimal | null;
+    reviewCount: number | null;
+    parseStatus: $Enums.ParseStatus;
+    capturedAt: Date;
+    _count: ProductSnapshotCountAggregateOutputType | null;
+    _avg: ProductSnapshotAvgAggregateOutputType | null;
+    _sum: ProductSnapshotSumAggregateOutputType | null;
+    _min: ProductSnapshotMinAggregateOutputType | null;
+    _max: ProductSnapshotMaxAggregateOutputType | null;
+};
+type GetProductSnapshotGroupByPayload<T extends ProductSnapshotGroupByArgs> = Prisma.PrismaPromise<Array<Prisma.PickEnumerable<ProductSnapshotGroupByOutputType, T['by']> & {
+    [P in ((keyof T) & (keyof ProductSnapshotGroupByOutputType))]: P extends '_count' ? T[P] extends boolean ? number : Prisma.GetScalarType<T[P], ProductSnapshotGroupByOutputType[P]> : Prisma.GetScalarType<T[P], ProductSnapshotGroupByOutputType[P]>;
+}>>;
+export type ProductSnapshotWhereInput = {
+    AND?: Prisma.ProductSnapshotWhereInput | Prisma.ProductSnapshotWhereInput[];
+    OR?: Prisma.ProductSnapshotWhereInput[];
+    NOT?: Prisma.ProductSnapshotWhereInput | Prisma.ProductSnapshotWhereInput[];
+    id?: Prisma.StringFilter<"ProductSnapshot"> | string;
+    productId?: Prisma.StringFilter<"ProductSnapshot"> | string;
+    parseJobId?: Prisma.StringFilter<"ProductSnapshot"> | string;
+    price?: Prisma.DecimalNullableFilter<"ProductSnapshot"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    currency?: Prisma.StringFilter<"ProductSnapshot"> | string;
+    rating?: Prisma.DecimalNullableFilter<"ProductSnapshot"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    reviewCount?: Prisma.IntNullableFilter<"ProductSnapshot"> | number | null;
+    parseStatus?: Prisma.EnumParseStatusFilter<"ProductSnapshot"> | $Enums.ParseStatus;
+    capturedAt?: Prisma.DateTimeFilter<"ProductSnapshot"> | Date | string;
+    product?: Prisma.XOR<Prisma.ProductScalarRelationFilter, Prisma.ProductWhereInput>;
+    parseJob?: Prisma.XOR<Prisma.ParseJobScalarRelationFilter, Prisma.ParseJobWhereInput>;
+};
+export type ProductSnapshotOrderByWithRelationInput = {
+    id?: Prisma.SortOrder;
+    productId?: Prisma.SortOrder;
+    parseJobId?: Prisma.SortOrder;
+    price?: Prisma.SortOrderInput | Prisma.SortOrder;
+    currency?: Prisma.SortOrder;
+    rating?: Prisma.SortOrderInput | Prisma.SortOrder;
+    reviewCount?: Prisma.SortOrderInput | Prisma.SortOrder;
+    parseStatus?: Prisma.SortOrder;
+    capturedAt?: Prisma.SortOrder;
+    product?: Prisma.ProductOrderByWithRelationInput;
+    parseJob?: Prisma.ParseJobOrderByWithRelationInput;
+};
+export type ProductSnapshotWhereUniqueInput = Prisma.AtLeast<{
+    id?: string;
+    AND?: Prisma.ProductSnapshotWhereInput | Prisma.ProductSnapshotWhereInput[];
+    OR?: Prisma.ProductSnapshotWhereInput[];
+    NOT?: Prisma.ProductSnapshotWhereInput | Prisma.ProductSnapshotWhereInput[];
+    productId?: Prisma.StringFilter<"ProductSnapshot"> | string;
+    parseJobId?: Prisma.StringFilter<"ProductSnapshot"> | string;
+    price?: Prisma.DecimalNullableFilter<"ProductSnapshot"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    currency?: Prisma.StringFilter<"ProductSnapshot"> | string;
+    rating?: Prisma.DecimalNullableFilter<"ProductSnapshot"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    reviewCount?: Prisma.IntNullableFilter<"ProductSnapshot"> | number | null;
+    parseStatus?: Prisma.EnumParseStatusFilter<"ProductSnapshot"> | $Enums.ParseStatus;
+    capturedAt?: Prisma.DateTimeFilter<"ProductSnapshot"> | Date | string;
+    product?: Prisma.XOR<Prisma.ProductScalarRelationFilter, Prisma.ProductWhereInput>;
+    parseJob?: Prisma.XOR<Prisma.ParseJobScalarRelationFilter, Prisma.ParseJobWhereInput>;
+}, "id">;
+export type ProductSnapshotOrderByWithAggregationInput = {
+    id?: Prisma.SortOrder;
+    productId?: Prisma.SortOrder;
+    parseJobId?: Prisma.SortOrder;
+    price?: Prisma.SortOrderInput | Prisma.SortOrder;
+    currency?: Prisma.SortOrder;
+    rating?: Prisma.SortOrderInput | Prisma.SortOrder;
+    reviewCount?: Prisma.SortOrderInput | Prisma.SortOrder;
+    parseStatus?: Prisma.SortOrder;
+    capturedAt?: Prisma.SortOrder;
+    _count?: Prisma.ProductSnapshotCountOrderByAggregateInput;
+    _avg?: Prisma.ProductSnapshotAvgOrderByAggregateInput;
+    _max?: Prisma.ProductSnapshotMaxOrderByAggregateInput;
+    _min?: Prisma.ProductSnapshotMinOrderByAggregateInput;
+    _sum?: Prisma.ProductSnapshotSumOrderByAggregateInput;
+};
+export type ProductSnapshotScalarWhereWithAggregatesInput = {
+    AND?: Prisma.ProductSnapshotScalarWhereWithAggregatesInput | Prisma.ProductSnapshotScalarWhereWithAggregatesInput[];
+    OR?: Prisma.ProductSnapshotScalarWhereWithAggregatesInput[];
+    NOT?: Prisma.ProductSnapshotScalarWhereWithAggregatesInput | Prisma.ProductSnapshotScalarWhereWithAggregatesInput[];
+    id?: Prisma.StringWithAggregatesFilter<"ProductSnapshot"> | string;
+    productId?: Prisma.StringWithAggregatesFilter<"ProductSnapshot"> | string;
+    parseJobId?: Prisma.StringWithAggregatesFilter<"ProductSnapshot"> | string;
+    price?: Prisma.DecimalNullableWithAggregatesFilter<"ProductSnapshot"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    currency?: Prisma.StringWithAggregatesFilter<"ProductSnapshot"> | string;
+    rating?: Prisma.DecimalNullableWithAggregatesFilter<"ProductSnapshot"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    reviewCount?: Prisma.IntNullableWithAggregatesFilter<"ProductSnapshot"> | number | null;
+    parseStatus?: Prisma.EnumParseStatusWithAggregatesFilter<"ProductSnapshot"> | $Enums.ParseStatus;
+    capturedAt?: Prisma.DateTimeWithAggregatesFilter<"ProductSnapshot"> | Date | string;
+};
+export type ProductSnapshotCreateInput = {
+    id?: string;
+    price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    currency?: string;
+    rating?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    reviewCount?: number | null;
+    parseStatus: $Enums.ParseStatus;
+    capturedAt?: Date | string;
+    product: Prisma.ProductCreateNestedOneWithoutSnapshotsInput;
+    parseJob: Prisma.ParseJobCreateNestedOneWithoutSnapshotsInput;
+};
+export type ProductSnapshotUncheckedCreateInput = {
+    id?: string;
+    productId: string;
+    parseJobId: string;
+    price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    currency?: string;
+    rating?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    reviewCount?: number | null;
+    parseStatus: $Enums.ParseStatus;
+    capturedAt?: Date | string;
+};
+export type ProductSnapshotUpdateInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    currency?: Prisma.StringFieldUpdateOperationsInput | string;
+    rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    reviewCount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+    parseStatus?: Prisma.EnumParseStatusFieldUpdateOperationsInput | $Enums.ParseStatus;
+    capturedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    product?: Prisma.ProductUpdateOneRequiredWithoutSnapshotsNestedInput;
+    parseJob?: Prisma.ParseJobUpdateOneRequiredWithoutSnapshotsNestedInput;
+};
+export type ProductSnapshotUncheckedUpdateInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    productId?: Prisma.StringFieldUpdateOperationsInput | string;
+    parseJobId?: Prisma.StringFieldUpdateOperationsInput | string;
+    price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    currency?: Prisma.StringFieldUpdateOperationsInput | string;
+    rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    reviewCount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+    parseStatus?: Prisma.EnumParseStatusFieldUpdateOperationsInput | $Enums.ParseStatus;
+    capturedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type ProductSnapshotCreateManyInput = {
+    id?: string;
+    productId: string;
+    parseJobId: string;
+    price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    currency?: string;
+    rating?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    reviewCount?: number | null;
+    parseStatus: $Enums.ParseStatus;
+    capturedAt?: Date | string;
+};
+export type ProductSnapshotUpdateManyMutationInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    currency?: Prisma.StringFieldUpdateOperationsInput | string;
+    rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    reviewCount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+    parseStatus?: Prisma.EnumParseStatusFieldUpdateOperationsInput | $Enums.ParseStatus;
+    capturedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type ProductSnapshotUncheckedUpdateManyInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    productId?: Prisma.StringFieldUpdateOperationsInput | string;
+    parseJobId?: Prisma.StringFieldUpdateOperationsInput | string;
+    price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    currency?: Prisma.StringFieldUpdateOperationsInput | string;
+    rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    reviewCount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+    parseStatus?: Prisma.EnumParseStatusFieldUpdateOperationsInput | $Enums.ParseStatus;
+    capturedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type ProductSnapshotListRelationFilter = {
+    every?: Prisma.ProductSnapshotWhereInput;
+    some?: Prisma.ProductSnapshotWhereInput;
+    none?: Prisma.ProductSnapshotWhereInput;
+};
+export type ProductSnapshotOrderByRelationAggregateInput = {
+    _count?: Prisma.SortOrder;
+};
+export type ProductSnapshotCountOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    productId?: Prisma.SortOrder;
+    parseJobId?: Prisma.SortOrder;
+    price?: Prisma.SortOrder;
+    currency?: Prisma.SortOrder;
+    rating?: Prisma.SortOrder;
+    reviewCount?: Prisma.SortOrder;
+    parseStatus?: Prisma.SortOrder;
+    capturedAt?: Prisma.SortOrder;
+};
+export type ProductSnapshotAvgOrderByAggregateInput = {
+    price?: Prisma.SortOrder;
+    rating?: Prisma.SortOrder;
+    reviewCount?: Prisma.SortOrder;
+};
+export type ProductSnapshotMaxOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    productId?: Prisma.SortOrder;
+    parseJobId?: Prisma.SortOrder;
+    price?: Prisma.SortOrder;
+    currency?: Prisma.SortOrder;
+    rating?: Prisma.SortOrder;
+    reviewCount?: Prisma.SortOrder;
+    parseStatus?: Prisma.SortOrder;
+    capturedAt?: Prisma.SortOrder;
+};
+export type ProductSnapshotMinOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    productId?: Prisma.SortOrder;
+    parseJobId?: Prisma.SortOrder;
+    price?: Prisma.SortOrder;
+    currency?: Prisma.SortOrder;
+    rating?: Prisma.SortOrder;
+    reviewCount?: Prisma.SortOrder;
+    parseStatus?: Prisma.SortOrder;
+    capturedAt?: Prisma.SortOrder;
+};
+export type ProductSnapshotSumOrderByAggregateInput = {
+    price?: Prisma.SortOrder;
+    rating?: Prisma.SortOrder;
+    reviewCount?: Prisma.SortOrder;
+};
+export type ProductSnapshotCreateNestedManyWithoutParseJobInput = {
+    create?: Prisma.XOR<Prisma.ProductSnapshotCreateWithoutParseJobInput, Prisma.ProductSnapshotUncheckedCreateWithoutParseJobInput> | Prisma.ProductSnapshotCreateWithoutParseJobInput[] | Prisma.ProductSnapshotUncheckedCreateWithoutParseJobInput[];
+    connectOrCreate?: Prisma.ProductSnapshotCreateOrConnectWithoutParseJobInput | Prisma.ProductSnapshotCreateOrConnectWithoutParseJobInput[];
+    createMany?: Prisma.ProductSnapshotCreateManyParseJobInputEnvelope;
+    connect?: Prisma.ProductSnapshotWhereUniqueInput | Prisma.ProductSnapshotWhereUniqueInput[];
+};
+export type ProductSnapshotUncheckedCreateNestedManyWithoutParseJobInput = {
+    create?: Prisma.XOR<Prisma.ProductSnapshotCreateWithoutParseJobInput, Prisma.ProductSnapshotUncheckedCreateWithoutParseJobInput> | Prisma.ProductSnapshotCreateWithoutParseJobInput[] | Prisma.ProductSnapshotUncheckedCreateWithoutParseJobInput[];
+    connectOrCreate?: Prisma.ProductSnapshotCreateOrConnectWithoutParseJobInput | Prisma.ProductSnapshotCreateOrConnectWithoutParseJobInput[];
+    createMany?: Prisma.ProductSnapshotCreateManyParseJobInputEnvelope;
+    connect?: Prisma.ProductSnapshotWhereUniqueInput | Prisma.ProductSnapshotWhereUniqueInput[];
+};
+export type ProductSnapshotUpdateManyWithoutParseJobNestedInput = {
+    create?: Prisma.XOR<Prisma.ProductSnapshotCreateWithoutParseJobInput, Prisma.ProductSnapshotUncheckedCreateWithoutParseJobInput> | Prisma.ProductSnapshotCreateWithoutParseJobInput[] | Prisma.ProductSnapshotUncheckedCreateWithoutParseJobInput[];
+    connectOrCreate?: Prisma.ProductSnapshotCreateOrConnectWithoutParseJobInput | Prisma.ProductSnapshotCreateOrConnectWithoutParseJobInput[];
+    upsert?: Prisma.ProductSnapshotUpsertWithWhereUniqueWithoutParseJobInput | Prisma.ProductSnapshotUpsertWithWhereUniqueWithoutParseJobInput[];
+    createMany?: Prisma.ProductSnapshotCreateManyParseJobInputEnvelope;
+    set?: Prisma.ProductSnapshotWhereUniqueInput | Prisma.ProductSnapshotWhereUniqueInput[];
+    disconnect?: Prisma.ProductSnapshotWhereUniqueInput | Prisma.ProductSnapshotWhereUniqueInput[];
+    delete?: Prisma.ProductSnapshotWhereUniqueInput | Prisma.ProductSnapshotWhereUniqueInput[];
+    connect?: Prisma.ProductSnapshotWhereUniqueInput | Prisma.ProductSnapshotWhereUniqueInput[];
+    update?: Prisma.ProductSnapshotUpdateWithWhereUniqueWithoutParseJobInput | Prisma.ProductSnapshotUpdateWithWhereUniqueWithoutParseJobInput[];
+    updateMany?: Prisma.ProductSnapshotUpdateManyWithWhereWithoutParseJobInput | Prisma.ProductSnapshotUpdateManyWithWhereWithoutParseJobInput[];
+    deleteMany?: Prisma.ProductSnapshotScalarWhereInput | Prisma.ProductSnapshotScalarWhereInput[];
+};
+export type ProductSnapshotUncheckedUpdateManyWithoutParseJobNestedInput = {
+    create?: Prisma.XOR<Prisma.ProductSnapshotCreateWithoutParseJobInput, Prisma.ProductSnapshotUncheckedCreateWithoutParseJobInput> | Prisma.ProductSnapshotCreateWithoutParseJobInput[] | Prisma.ProductSnapshotUncheckedCreateWithoutParseJobInput[];
+    connectOrCreate?: Prisma.ProductSnapshotCreateOrConnectWithoutParseJobInput | Prisma.ProductSnapshotCreateOrConnectWithoutParseJobInput[];
+    upsert?: Prisma.ProductSnapshotUpsertWithWhereUniqueWithoutParseJobInput | Prisma.ProductSnapshotUpsertWithWhereUniqueWithoutParseJobInput[];
+    createMany?: Prisma.ProductSnapshotCreateManyParseJobInputEnvelope;
+    set?: Prisma.ProductSnapshotWhereUniqueInput | Prisma.ProductSnapshotWhereUniqueInput[];
+    disconnect?: Prisma.ProductSnapshotWhereUniqueInput | Prisma.ProductSnapshotWhereUniqueInput[];
+    delete?: Prisma.ProductSnapshotWhereUniqueInput | Prisma.ProductSnapshotWhereUniqueInput[];
+    connect?: Prisma.ProductSnapshotWhereUniqueInput | Prisma.ProductSnapshotWhereUniqueInput[];
+    update?: Prisma.ProductSnapshotUpdateWithWhereUniqueWithoutParseJobInput | Prisma.ProductSnapshotUpdateWithWhereUniqueWithoutParseJobInput[];
+    updateMany?: Prisma.ProductSnapshotUpdateManyWithWhereWithoutParseJobInput | Prisma.ProductSnapshotUpdateManyWithWhereWithoutParseJobInput[];
+    deleteMany?: Prisma.ProductSnapshotScalarWhereInput | Prisma.ProductSnapshotScalarWhereInput[];
+};
+export type ProductSnapshotCreateNestedManyWithoutProductInput = {
+    create?: Prisma.XOR<Prisma.ProductSnapshotCreateWithoutProductInput, Prisma.ProductSnapshotUncheckedCreateWithoutProductInput> | Prisma.ProductSnapshotCreateWithoutProductInput[] | Prisma.ProductSnapshotUncheckedCreateWithoutProductInput[];
+    connectOrCreate?: Prisma.ProductSnapshotCreateOrConnectWithoutProductInput | Prisma.ProductSnapshotCreateOrConnectWithoutProductInput[];
+    createMany?: Prisma.ProductSnapshotCreateManyProductInputEnvelope;
+    connect?: Prisma.ProductSnapshotWhereUniqueInput | Prisma.ProductSnapshotWhereUniqueInput[];
+};
+export type ProductSnapshotUncheckedCreateNestedManyWithoutProductInput = {
+    create?: Prisma.XOR<Prisma.ProductSnapshotCreateWithoutProductInput, Prisma.ProductSnapshotUncheckedCreateWithoutProductInput> | Prisma.ProductSnapshotCreateWithoutProductInput[] | Prisma.ProductSnapshotUncheckedCreateWithoutProductInput[];
+    connectOrCreate?: Prisma.ProductSnapshotCreateOrConnectWithoutProductInput | Prisma.ProductSnapshotCreateOrConnectWithoutProductInput[];
+    createMany?: Prisma.ProductSnapshotCreateManyProductInputEnvelope;
+    connect?: Prisma.ProductSnapshotWhereUniqueInput | Prisma.ProductSnapshotWhereUniqueInput[];
+};
+export type ProductSnapshotUpdateManyWithoutProductNestedInput = {
+    create?: Prisma.XOR<Prisma.ProductSnapshotCreateWithoutProductInput, Prisma.ProductSnapshotUncheckedCreateWithoutProductInput> | Prisma.ProductSnapshotCreateWithoutProductInput[] | Prisma.ProductSnapshotUncheckedCreateWithoutProductInput[];
+    connectOrCreate?: Prisma.ProductSnapshotCreateOrConnectWithoutProductInput | Prisma.ProductSnapshotCreateOrConnectWithoutProductInput[];
+    upsert?: Prisma.ProductSnapshotUpsertWithWhereUniqueWithoutProductInput | Prisma.ProductSnapshotUpsertWithWhereUniqueWithoutProductInput[];
+    createMany?: Prisma.ProductSnapshotCreateManyProductInputEnvelope;
+    set?: Prisma.ProductSnapshotWhereUniqueInput | Prisma.ProductSnapshotWhereUniqueInput[];
+    disconnect?: Prisma.ProductSnapshotWhereUniqueInput | Prisma.ProductSnapshotWhereUniqueInput[];
+    delete?: Prisma.ProductSnapshotWhereUniqueInput | Prisma.ProductSnapshotWhereUniqueInput[];
+    connect?: Prisma.ProductSnapshotWhereUniqueInput | Prisma.ProductSnapshotWhereUniqueInput[];
+    update?: Prisma.ProductSnapshotUpdateWithWhereUniqueWithoutProductInput | Prisma.ProductSnapshotUpdateWithWhereUniqueWithoutProductInput[];
+    updateMany?: Prisma.ProductSnapshotUpdateManyWithWhereWithoutProductInput | Prisma.ProductSnapshotUpdateManyWithWhereWithoutProductInput[];
+    deleteMany?: Prisma.ProductSnapshotScalarWhereInput | Prisma.ProductSnapshotScalarWhereInput[];
+};
+export type ProductSnapshotUncheckedUpdateManyWithoutProductNestedInput = {
+    create?: Prisma.XOR<Prisma.ProductSnapshotCreateWithoutProductInput, Prisma.ProductSnapshotUncheckedCreateWithoutProductInput> | Prisma.ProductSnapshotCreateWithoutProductInput[] | Prisma.ProductSnapshotUncheckedCreateWithoutProductInput[];
+    connectOrCreate?: Prisma.ProductSnapshotCreateOrConnectWithoutProductInput | Prisma.ProductSnapshotCreateOrConnectWithoutProductInput[];
+    upsert?: Prisma.ProductSnapshotUpsertWithWhereUniqueWithoutProductInput | Prisma.ProductSnapshotUpsertWithWhereUniqueWithoutProductInput[];
+    createMany?: Prisma.ProductSnapshotCreateManyProductInputEnvelope;
+    set?: Prisma.ProductSnapshotWhereUniqueInput | Prisma.ProductSnapshotWhereUniqueInput[];
+    disconnect?: Prisma.ProductSnapshotWhereUniqueInput | Prisma.ProductSnapshotWhereUniqueInput[];
+    delete?: Prisma.ProductSnapshotWhereUniqueInput | Prisma.ProductSnapshotWhereUniqueInput[];
+    connect?: Prisma.ProductSnapshotWhereUniqueInput | Prisma.ProductSnapshotWhereUniqueInput[];
+    update?: Prisma.ProductSnapshotUpdateWithWhereUniqueWithoutProductInput | Prisma.ProductSnapshotUpdateWithWhereUniqueWithoutProductInput[];
+    updateMany?: Prisma.ProductSnapshotUpdateManyWithWhereWithoutProductInput | Prisma.ProductSnapshotUpdateManyWithWhereWithoutProductInput[];
+    deleteMany?: Prisma.ProductSnapshotScalarWhereInput | Prisma.ProductSnapshotScalarWhereInput[];
+};
+export type NullableDecimalFieldUpdateOperationsInput = {
+    set?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    increment?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    decrement?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    multiply?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    divide?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+};
+export type EnumParseStatusFieldUpdateOperationsInput = {
+    set?: $Enums.ParseStatus;
+};
+export type ProductSnapshotCreateWithoutParseJobInput = {
+    id?: string;
+    price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    currency?: string;
+    rating?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    reviewCount?: number | null;
+    parseStatus: $Enums.ParseStatus;
+    capturedAt?: Date | string;
+    product: Prisma.ProductCreateNestedOneWithoutSnapshotsInput;
+};
+export type ProductSnapshotUncheckedCreateWithoutParseJobInput = {
+    id?: string;
+    productId: string;
+    price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    currency?: string;
+    rating?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    reviewCount?: number | null;
+    parseStatus: $Enums.ParseStatus;
+    capturedAt?: Date | string;
+};
+export type ProductSnapshotCreateOrConnectWithoutParseJobInput = {
+    where: Prisma.ProductSnapshotWhereUniqueInput;
+    create: Prisma.XOR<Prisma.ProductSnapshotCreateWithoutParseJobInput, Prisma.ProductSnapshotUncheckedCreateWithoutParseJobInput>;
+};
+export type ProductSnapshotCreateManyParseJobInputEnvelope = {
+    data: Prisma.ProductSnapshotCreateManyParseJobInput | Prisma.ProductSnapshotCreateManyParseJobInput[];
+    skipDuplicates?: boolean;
+};
+export type ProductSnapshotUpsertWithWhereUniqueWithoutParseJobInput = {
+    where: Prisma.ProductSnapshotWhereUniqueInput;
+    update: Prisma.XOR<Prisma.ProductSnapshotUpdateWithoutParseJobInput, Prisma.ProductSnapshotUncheckedUpdateWithoutParseJobInput>;
+    create: Prisma.XOR<Prisma.ProductSnapshotCreateWithoutParseJobInput, Prisma.ProductSnapshotUncheckedCreateWithoutParseJobInput>;
+};
+export type ProductSnapshotUpdateWithWhereUniqueWithoutParseJobInput = {
+    where: Prisma.ProductSnapshotWhereUniqueInput;
+    data: Prisma.XOR<Prisma.ProductSnapshotUpdateWithoutParseJobInput, Prisma.ProductSnapshotUncheckedUpdateWithoutParseJobInput>;
+};
+export type ProductSnapshotUpdateManyWithWhereWithoutParseJobInput = {
+    where: Prisma.ProductSnapshotScalarWhereInput;
+    data: Prisma.XOR<Prisma.ProductSnapshotUpdateManyMutationInput, Prisma.ProductSnapshotUncheckedUpdateManyWithoutParseJobInput>;
+};
+export type ProductSnapshotScalarWhereInput = {
+    AND?: Prisma.ProductSnapshotScalarWhereInput | Prisma.ProductSnapshotScalarWhereInput[];
+    OR?: Prisma.ProductSnapshotScalarWhereInput[];
+    NOT?: Prisma.ProductSnapshotScalarWhereInput | Prisma.ProductSnapshotScalarWhereInput[];
+    id?: Prisma.StringFilter<"ProductSnapshot"> | string;
+    productId?: Prisma.StringFilter<"ProductSnapshot"> | string;
+    parseJobId?: Prisma.StringFilter<"ProductSnapshot"> | string;
+    price?: Prisma.DecimalNullableFilter<"ProductSnapshot"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    currency?: Prisma.StringFilter<"ProductSnapshot"> | string;
+    rating?: Prisma.DecimalNullableFilter<"ProductSnapshot"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    reviewCount?: Prisma.IntNullableFilter<"ProductSnapshot"> | number | null;
+    parseStatus?: Prisma.EnumParseStatusFilter<"ProductSnapshot"> | $Enums.ParseStatus;
+    capturedAt?: Prisma.DateTimeFilter<"ProductSnapshot"> | Date | string;
+};
+export type ProductSnapshotCreateWithoutProductInput = {
+    id?: string;
+    price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    currency?: string;
+    rating?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    reviewCount?: number | null;
+    parseStatus: $Enums.ParseStatus;
+    capturedAt?: Date | string;
+    parseJob: Prisma.ParseJobCreateNestedOneWithoutSnapshotsInput;
+};
+export type ProductSnapshotUncheckedCreateWithoutProductInput = {
+    id?: string;
+    parseJobId: string;
+    price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    currency?: string;
+    rating?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    reviewCount?: number | null;
+    parseStatus: $Enums.ParseStatus;
+    capturedAt?: Date | string;
+};
+export type ProductSnapshotCreateOrConnectWithoutProductInput = {
+    where: Prisma.ProductSnapshotWhereUniqueInput;
+    create: Prisma.XOR<Prisma.ProductSnapshotCreateWithoutProductInput, Prisma.ProductSnapshotUncheckedCreateWithoutProductInput>;
+};
+export type ProductSnapshotCreateManyProductInputEnvelope = {
+    data: Prisma.ProductSnapshotCreateManyProductInput | Prisma.ProductSnapshotCreateManyProductInput[];
+    skipDuplicates?: boolean;
+};
+export type ProductSnapshotUpsertWithWhereUniqueWithoutProductInput = {
+    where: Prisma.ProductSnapshotWhereUniqueInput;
+    update: Prisma.XOR<Prisma.ProductSnapshotUpdateWithoutProductInput, Prisma.ProductSnapshotUncheckedUpdateWithoutProductInput>;
+    create: Prisma.XOR<Prisma.ProductSnapshotCreateWithoutProductInput, Prisma.ProductSnapshotUncheckedCreateWithoutProductInput>;
+};
+export type ProductSnapshotUpdateWithWhereUniqueWithoutProductInput = {
+    where: Prisma.ProductSnapshotWhereUniqueInput;
+    data: Prisma.XOR<Prisma.ProductSnapshotUpdateWithoutProductInput, Prisma.ProductSnapshotUncheckedUpdateWithoutProductInput>;
+};
+export type ProductSnapshotUpdateManyWithWhereWithoutProductInput = {
+    where: Prisma.ProductSnapshotScalarWhereInput;
+    data: Prisma.XOR<Prisma.ProductSnapshotUpdateManyMutationInput, Prisma.ProductSnapshotUncheckedUpdateManyWithoutProductInput>;
+};
+export type ProductSnapshotCreateManyParseJobInput = {
+    id?: string;
+    productId: string;
+    price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    currency?: string;
+    rating?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    reviewCount?: number | null;
+    parseStatus: $Enums.ParseStatus;
+    capturedAt?: Date | string;
+};
+export type ProductSnapshotUpdateWithoutParseJobInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    currency?: Prisma.StringFieldUpdateOperationsInput | string;
+    rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    reviewCount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+    parseStatus?: Prisma.EnumParseStatusFieldUpdateOperationsInput | $Enums.ParseStatus;
+    capturedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    product?: Prisma.ProductUpdateOneRequiredWithoutSnapshotsNestedInput;
+};
+export type ProductSnapshotUncheckedUpdateWithoutParseJobInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    productId?: Prisma.StringFieldUpdateOperationsInput | string;
+    price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    currency?: Prisma.StringFieldUpdateOperationsInput | string;
+    rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    reviewCount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+    parseStatus?: Prisma.EnumParseStatusFieldUpdateOperationsInput | $Enums.ParseStatus;
+    capturedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type ProductSnapshotUncheckedUpdateManyWithoutParseJobInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    productId?: Prisma.StringFieldUpdateOperationsInput | string;
+    price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    currency?: Prisma.StringFieldUpdateOperationsInput | string;
+    rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    reviewCount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+    parseStatus?: Prisma.EnumParseStatusFieldUpdateOperationsInput | $Enums.ParseStatus;
+    capturedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type ProductSnapshotCreateManyProductInput = {
+    id?: string;
+    parseJobId: string;
+    price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    currency?: string;
+    rating?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    reviewCount?: number | null;
+    parseStatus: $Enums.ParseStatus;
+    capturedAt?: Date | string;
+};
+export type ProductSnapshotUpdateWithoutProductInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    currency?: Prisma.StringFieldUpdateOperationsInput | string;
+    rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    reviewCount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+    parseStatus?: Prisma.EnumParseStatusFieldUpdateOperationsInput | $Enums.ParseStatus;
+    capturedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    parseJob?: Prisma.ParseJobUpdateOneRequiredWithoutSnapshotsNestedInput;
+};
+export type ProductSnapshotUncheckedUpdateWithoutProductInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    parseJobId?: Prisma.StringFieldUpdateOperationsInput | string;
+    price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    currency?: Prisma.StringFieldUpdateOperationsInput | string;
+    rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    reviewCount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+    parseStatus?: Prisma.EnumParseStatusFieldUpdateOperationsInput | $Enums.ParseStatus;
+    capturedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type ProductSnapshotUncheckedUpdateManyWithoutProductInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    parseJobId?: Prisma.StringFieldUpdateOperationsInput | string;
+    price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    currency?: Prisma.StringFieldUpdateOperationsInput | string;
+    rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
+    reviewCount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+    parseStatus?: Prisma.EnumParseStatusFieldUpdateOperationsInput | $Enums.ParseStatus;
+    capturedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type ProductSnapshotSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+    id?: boolean;
+    productId?: boolean;
+    parseJobId?: boolean;
+    price?: boolean;
+    currency?: boolean;
+    rating?: boolean;
+    reviewCount?: boolean;
+    parseStatus?: boolean;
+    capturedAt?: boolean;
+    product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>;
+    parseJob?: boolean | Prisma.ParseJobDefaultArgs<ExtArgs>;
+}, ExtArgs["result"]["productSnapshot"]>;
+export type ProductSnapshotSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+    id?: boolean;
+    productId?: boolean;
+    parseJobId?: boolean;
+    price?: boolean;
+    currency?: boolean;
+    rating?: boolean;
+    reviewCount?: boolean;
+    parseStatus?: boolean;
+    capturedAt?: boolean;
+    product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>;
+    parseJob?: boolean | Prisma.ParseJobDefaultArgs<ExtArgs>;
+}, ExtArgs["result"]["productSnapshot"]>;
+export type ProductSnapshotSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+    id?: boolean;
+    productId?: boolean;
+    parseJobId?: boolean;
+    price?: boolean;
+    currency?: boolean;
+    rating?: boolean;
+    reviewCount?: boolean;
+    parseStatus?: boolean;
+    capturedAt?: boolean;
+    product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>;
+    parseJob?: boolean | Prisma.ParseJobDefaultArgs<ExtArgs>;
+}, ExtArgs["result"]["productSnapshot"]>;
+export type ProductSnapshotSelectScalar = {
+    id?: boolean;
+    productId?: boolean;
+    parseJobId?: boolean;
+    price?: boolean;
+    currency?: boolean;
+    rating?: boolean;
+    reviewCount?: boolean;
+    parseStatus?: boolean;
+    capturedAt?: boolean;
+};
+export type ProductSnapshotOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "productId" | "parseJobId" | "price" | "currency" | "rating" | "reviewCount" | "parseStatus" | "capturedAt", ExtArgs["result"]["productSnapshot"]>;
+export type ProductSnapshotInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>;
+    parseJob?: boolean | Prisma.ParseJobDefaultArgs<ExtArgs>;
+};
+export type ProductSnapshotIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>;
+    parseJob?: boolean | Prisma.ParseJobDefaultArgs<ExtArgs>;
+};
+export type ProductSnapshotIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>;
+    parseJob?: boolean | Prisma.ParseJobDefaultArgs<ExtArgs>;
+};
+export type $ProductSnapshotPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    name: "ProductSnapshot";
+    objects: {
+        product: Prisma.$ProductPayload<ExtArgs>;
+        parseJob: Prisma.$ParseJobPayload<ExtArgs>;
+    };
+    scalars: runtime.Types.Extensions.GetPayloadResult<{
+        id: string;
+        productId: string;
+        parseJobId: string;
+        price: runtime.Decimal | null;
+        currency: string;
+        rating: runtime.Decimal | null;
+        reviewCount: number | null;
+        parseStatus: $Enums.ParseStatus;
+        capturedAt: Date;
+    }, ExtArgs["result"]["productSnapshot"]>;
+    composites: {};
+};
+export type ProductSnapshotGetPayload<S extends boolean | null | undefined | ProductSnapshotDefaultArgs> = runtime.Types.Result.GetResult<Prisma.$ProductSnapshotPayload, S>;
+export type ProductSnapshotCountArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = Omit<ProductSnapshotFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+    select?: ProductSnapshotCountAggregateInputType | true;
+};
+export interface ProductSnapshotDelegate<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: {
+        types: Prisma.TypeMap<ExtArgs>['model']['ProductSnapshot'];
+        meta: {
+            name: 'ProductSnapshot';
+        };
+    };
+    findUnique<T extends ProductSnapshotFindUniqueArgs>(args: Prisma.SelectSubset<T, ProductSnapshotFindUniqueArgs<ExtArgs>>): Prisma.Prisma__ProductSnapshotClient<runtime.Types.Result.GetResult<Prisma.$ProductSnapshotPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>;
+    findUniqueOrThrow<T extends ProductSnapshotFindUniqueOrThrowArgs>(args: Prisma.SelectSubset<T, ProductSnapshotFindUniqueOrThrowArgs<ExtArgs>>): Prisma.Prisma__ProductSnapshotClient<runtime.Types.Result.GetResult<Prisma.$ProductSnapshotPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    findFirst<T extends ProductSnapshotFindFirstArgs>(args?: Prisma.SelectSubset<T, ProductSnapshotFindFirstArgs<ExtArgs>>): Prisma.Prisma__ProductSnapshotClient<runtime.Types.Result.GetResult<Prisma.$ProductSnapshotPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>;
+    findFirstOrThrow<T extends ProductSnapshotFindFirstOrThrowArgs>(args?: Prisma.SelectSubset<T, ProductSnapshotFindFirstOrThrowArgs<ExtArgs>>): Prisma.Prisma__ProductSnapshotClient<runtime.Types.Result.GetResult<Prisma.$ProductSnapshotPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    findMany<T extends ProductSnapshotFindManyArgs>(args?: Prisma.SelectSubset<T, ProductSnapshotFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProductSnapshotPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>;
+    create<T extends ProductSnapshotCreateArgs>(args: Prisma.SelectSubset<T, ProductSnapshotCreateArgs<ExtArgs>>): Prisma.Prisma__ProductSnapshotClient<runtime.Types.Result.GetResult<Prisma.$ProductSnapshotPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    createMany<T extends ProductSnapshotCreateManyArgs>(args?: Prisma.SelectSubset<T, ProductSnapshotCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    createManyAndReturn<T extends ProductSnapshotCreateManyAndReturnArgs>(args?: Prisma.SelectSubset<T, ProductSnapshotCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProductSnapshotPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>;
+    delete<T extends ProductSnapshotDeleteArgs>(args: Prisma.SelectSubset<T, ProductSnapshotDeleteArgs<ExtArgs>>): Prisma.Prisma__ProductSnapshotClient<runtime.Types.Result.GetResult<Prisma.$ProductSnapshotPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    update<T extends ProductSnapshotUpdateArgs>(args: Prisma.SelectSubset<T, ProductSnapshotUpdateArgs<ExtArgs>>): Prisma.Prisma__ProductSnapshotClient<runtime.Types.Result.GetResult<Prisma.$ProductSnapshotPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    deleteMany<T extends ProductSnapshotDeleteManyArgs>(args?: Prisma.SelectSubset<T, ProductSnapshotDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    updateMany<T extends ProductSnapshotUpdateManyArgs>(args: Prisma.SelectSubset<T, ProductSnapshotUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    updateManyAndReturn<T extends ProductSnapshotUpdateManyAndReturnArgs>(args: Prisma.SelectSubset<T, ProductSnapshotUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProductSnapshotPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>;
+    upsert<T extends ProductSnapshotUpsertArgs>(args: Prisma.SelectSubset<T, ProductSnapshotUpsertArgs<ExtArgs>>): Prisma.Prisma__ProductSnapshotClient<runtime.Types.Result.GetResult<Prisma.$ProductSnapshotPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    count<T extends ProductSnapshotCountArgs>(args?: Prisma.Subset<T, ProductSnapshotCountArgs>): Prisma.PrismaPromise<T extends runtime.Types.Utils.Record<'select', any> ? T['select'] extends true ? number : Prisma.GetScalarType<T['select'], ProductSnapshotCountAggregateOutputType> : number>;
+    aggregate<T extends ProductSnapshotAggregateArgs>(args: Prisma.Subset<T, ProductSnapshotAggregateArgs>): Prisma.PrismaPromise<GetProductSnapshotAggregateType<T>>;
+    groupBy<T extends ProductSnapshotGroupByArgs, HasSelectOrTake extends Prisma.Or<Prisma.Extends<'skip', Prisma.Keys<T>>, Prisma.Extends<'take', Prisma.Keys<T>>>, OrderByArg extends Prisma.True extends HasSelectOrTake ? {
+        orderBy: ProductSnapshotGroupByArgs['orderBy'];
+    } : {
+        orderBy?: ProductSnapshotGroupByArgs['orderBy'];
+    }, OrderFields extends Prisma.ExcludeUnderscoreKeys<Prisma.Keys<Prisma.MaybeTupleToUnion<T['orderBy']>>>, ByFields extends Prisma.MaybeTupleToUnion<T['by']>, ByValid extends Prisma.Has<ByFields, OrderFields>, HavingFields extends Prisma.GetHavingFields<T['having']>, HavingValid extends Prisma.Has<ByFields, HavingFields>, ByEmpty extends T['by'] extends never[] ? Prisma.True : Prisma.False, InputErrors extends ByEmpty extends Prisma.True ? `Error: "by" must not be empty.` : HavingValid extends Prisma.False ? {
+        [P in HavingFields]: P extends ByFields ? never : P extends string ? `Error: Field "${P}" used in "having" needs to be provided in "by".` : [
+            Error,
+            'Field ',
+            P,
+            ` in "having" needs to be provided in "by"`
+        ];
+    }[HavingFields] : 'take' extends Prisma.Keys<T> ? 'orderBy' extends Prisma.Keys<T> ? ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields] : 'Error: If you provide "take", you also need to provide "orderBy"' : 'skip' extends Prisma.Keys<T> ? 'orderBy' extends Prisma.Keys<T> ? ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields] : 'Error: If you provide "skip", you also need to provide "orderBy"' : ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields]>(args: Prisma.SubsetIntersection<T, ProductSnapshotGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetProductSnapshotGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>;
+    readonly fields: ProductSnapshotFieldRefs;
+}
+export interface Prisma__ProductSnapshotClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise";
+    product<T extends Prisma.ProductDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ProductDefaultArgs<ExtArgs>>): Prisma.Prisma__ProductClient<runtime.Types.Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>;
+    parseJob<T extends Prisma.ParseJobDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ParseJobDefaultArgs<ExtArgs>>): Prisma.Prisma__ParseJobClient<runtime.Types.Result.GetResult<Prisma.$ParseJobPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>;
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): runtime.Types.Utils.JsPromise<TResult1 | TResult2>;
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): runtime.Types.Utils.JsPromise<T | TResult>;
+    finally(onfinally?: (() => void) | undefined | null): runtime.Types.Utils.JsPromise<T>;
+}
+export interface ProductSnapshotFieldRefs {
+    readonly id: Prisma.FieldRef<"ProductSnapshot", 'String'>;
+    readonly productId: Prisma.FieldRef<"ProductSnapshot", 'String'>;
+    readonly parseJobId: Prisma.FieldRef<"ProductSnapshot", 'String'>;
+    readonly price: Prisma.FieldRef<"ProductSnapshot", 'Decimal'>;
+    readonly currency: Prisma.FieldRef<"ProductSnapshot", 'String'>;
+    readonly rating: Prisma.FieldRef<"ProductSnapshot", 'Decimal'>;
+    readonly reviewCount: Prisma.FieldRef<"ProductSnapshot", 'Int'>;
+    readonly parseStatus: Prisma.FieldRef<"ProductSnapshot", 'ParseStatus'>;
+    readonly capturedAt: Prisma.FieldRef<"ProductSnapshot", 'DateTime'>;
+}
+export type ProductSnapshotFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.ProductSnapshotSelect<ExtArgs> | null;
+    omit?: Prisma.ProductSnapshotOmit<ExtArgs> | null;
+    include?: Prisma.ProductSnapshotInclude<ExtArgs> | null;
+    where: Prisma.ProductSnapshotWhereUniqueInput;
+};
+export type ProductSnapshotFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.ProductSnapshotSelect<ExtArgs> | null;
+    omit?: Prisma.ProductSnapshotOmit<ExtArgs> | null;
+    include?: Prisma.ProductSnapshotInclude<ExtArgs> | null;
+    where: Prisma.ProductSnapshotWhereUniqueInput;
+};
+export type ProductSnapshotFindFirstArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.ProductSnapshotSelect<ExtArgs> | null;
+    omit?: Prisma.ProductSnapshotOmit<ExtArgs> | null;
+    include?: Prisma.ProductSnapshotInclude<ExtArgs> | null;
+    where?: Prisma.ProductSnapshotWhereInput;
+    orderBy?: Prisma.ProductSnapshotOrderByWithRelationInput | Prisma.ProductSnapshotOrderByWithRelationInput[];
+    cursor?: Prisma.ProductSnapshotWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: Prisma.ProductSnapshotScalarFieldEnum | Prisma.ProductSnapshotScalarFieldEnum[];
+};
+export type ProductSnapshotFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.ProductSnapshotSelect<ExtArgs> | null;
+    omit?: Prisma.ProductSnapshotOmit<ExtArgs> | null;
+    include?: Prisma.ProductSnapshotInclude<ExtArgs> | null;
+    where?: Prisma.ProductSnapshotWhereInput;
+    orderBy?: Prisma.ProductSnapshotOrderByWithRelationInput | Prisma.ProductSnapshotOrderByWithRelationInput[];
+    cursor?: Prisma.ProductSnapshotWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: Prisma.ProductSnapshotScalarFieldEnum | Prisma.ProductSnapshotScalarFieldEnum[];
+};
+export type ProductSnapshotFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.ProductSnapshotSelect<ExtArgs> | null;
+    omit?: Prisma.ProductSnapshotOmit<ExtArgs> | null;
+    include?: Prisma.ProductSnapshotInclude<ExtArgs> | null;
+    where?: Prisma.ProductSnapshotWhereInput;
+    orderBy?: Prisma.ProductSnapshotOrderByWithRelationInput | Prisma.ProductSnapshotOrderByWithRelationInput[];
+    cursor?: Prisma.ProductSnapshotWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: Prisma.ProductSnapshotScalarFieldEnum | Prisma.ProductSnapshotScalarFieldEnum[];
+};
+export type ProductSnapshotCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.ProductSnapshotSelect<ExtArgs> | null;
+    omit?: Prisma.ProductSnapshotOmit<ExtArgs> | null;
+    include?: Prisma.ProductSnapshotInclude<ExtArgs> | null;
+    data: Prisma.XOR<Prisma.ProductSnapshotCreateInput, Prisma.ProductSnapshotUncheckedCreateInput>;
+};
+export type ProductSnapshotCreateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    data: Prisma.ProductSnapshotCreateManyInput | Prisma.ProductSnapshotCreateManyInput[];
+    skipDuplicates?: boolean;
+};
+export type ProductSnapshotCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.ProductSnapshotSelectCreateManyAndReturn<ExtArgs> | null;
+    omit?: Prisma.ProductSnapshotOmit<ExtArgs> | null;
+    data: Prisma.ProductSnapshotCreateManyInput | Prisma.ProductSnapshotCreateManyInput[];
+    skipDuplicates?: boolean;
+    include?: Prisma.ProductSnapshotIncludeCreateManyAndReturn<ExtArgs> | null;
+};
+export type ProductSnapshotUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.ProductSnapshotSelect<ExtArgs> | null;
+    omit?: Prisma.ProductSnapshotOmit<ExtArgs> | null;
+    include?: Prisma.ProductSnapshotInclude<ExtArgs> | null;
+    data: Prisma.XOR<Prisma.ProductSnapshotUpdateInput, Prisma.ProductSnapshotUncheckedUpdateInput>;
+    where: Prisma.ProductSnapshotWhereUniqueInput;
+};
+export type ProductSnapshotUpdateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    data: Prisma.XOR<Prisma.ProductSnapshotUpdateManyMutationInput, Prisma.ProductSnapshotUncheckedUpdateManyInput>;
+    where?: Prisma.ProductSnapshotWhereInput;
+    limit?: number;
+};
+export type ProductSnapshotUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.ProductSnapshotSelectUpdateManyAndReturn<ExtArgs> | null;
+    omit?: Prisma.ProductSnapshotOmit<ExtArgs> | null;
+    data: Prisma.XOR<Prisma.ProductSnapshotUpdateManyMutationInput, Prisma.ProductSnapshotUncheckedUpdateManyInput>;
+    where?: Prisma.ProductSnapshotWhereInput;
+    limit?: number;
+    include?: Prisma.ProductSnapshotIncludeUpdateManyAndReturn<ExtArgs> | null;
+};
+export type ProductSnapshotUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.ProductSnapshotSelect<ExtArgs> | null;
+    omit?: Prisma.ProductSnapshotOmit<ExtArgs> | null;
+    include?: Prisma.ProductSnapshotInclude<ExtArgs> | null;
+    where: Prisma.ProductSnapshotWhereUniqueInput;
+    create: Prisma.XOR<Prisma.ProductSnapshotCreateInput, Prisma.ProductSnapshotUncheckedCreateInput>;
+    update: Prisma.XOR<Prisma.ProductSnapshotUpdateInput, Prisma.ProductSnapshotUncheckedUpdateInput>;
+};
+export type ProductSnapshotDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.ProductSnapshotSelect<ExtArgs> | null;
+    omit?: Prisma.ProductSnapshotOmit<ExtArgs> | null;
+    include?: Prisma.ProductSnapshotInclude<ExtArgs> | null;
+    where: Prisma.ProductSnapshotWhereUniqueInput;
+};
+export type ProductSnapshotDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.ProductSnapshotWhereInput;
+    limit?: number;
+};
+export type ProductSnapshotDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.ProductSnapshotSelect<ExtArgs> | null;
+    omit?: Prisma.ProductSnapshotOmit<ExtArgs> | null;
+    include?: Prisma.ProductSnapshotInclude<ExtArgs> | null;
+};
+export {};

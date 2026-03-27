@@ -1,0 +1,12 @@
+import { ParseCategoryTrendsHandler } from './application/commands/parse-category-trends/parse-category-trends.handler';
+import { GetCategoryTrendsHandler } from './application/queries/get-category-trends/get-category-trends.handler';
+import { ProductParsedHandler } from './application/events/product-parsed.handler';
+import { HttpAdapter } from './adapters/http.adapter';
+import { ExtractorAdapter } from './adapters/extractor.adapter';
+import { ProxyAdapter } from './adapters/proxy.adapter';
+import { PuppeteerAdapter } from './adapters/puppeteer.adapter';
+import { SessionAdapter } from './adapters/session.adapter';
+export declare const CommandHandlers: (typeof ParseCategoryTrendsHandler)[];
+export declare const QueryHandlers: (typeof GetCategoryTrendsHandler)[];
+export declare const EventHandlers: (typeof ProductParsedHandler)[];
+export declare const Adapters: (typeof PuppeteerAdapter | typeof SessionAdapter | typeof ProxyAdapter | typeof HttpAdapter | typeof ExtractorAdapter)[];
