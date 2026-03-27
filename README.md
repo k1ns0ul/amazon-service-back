@@ -130,10 +130,6 @@ curl -X POST http://localhost:3001/parser/trends \
 |-------|------|----------|
 | POST | /parser/trends | запустить парсинг трендов категории |
 | GET | /parser/trends/:jobId | статус и результаты джоба |
-| POST | /parser/competitors | запустить парсинг конкурентов |
-| GET | /parser/competitors/:jobId | статус и результаты |
-| POST | /parser/own-products | запустить парсинг своих товаров |
-| GET | /parser/own-products/:jobId | статус и результаты |
 | GET | /admin/stats | общая статистика системы |
 | GET | /admin/proxy-health | статус прокси с live проверкой |
 | GET | /admin/cookie-status | статус amazon сессий |
